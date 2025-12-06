@@ -37,6 +37,9 @@ RUN sed -i 's/@db\.VarChar([0-9]*)//g' ./prisma/schema.prisma && \
     sed -i 's/@db\.Date//g' ./prisma/schema.prisma
 
 RUN npx prisma generate
+RUN npx prisma db push
+RUN npm run build
+
 
 # Lite için build script’ini sadece tsup yap
 RUN node -e "const fs=require('fs');const p=JSON.parse(fs.readFileSync('package.json','utf8'));p.scripts.build='tsup';fs.writeFileSync('package.json',JSON.stringify(p,null,2));"
