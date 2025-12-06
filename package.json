@@ -7,7 +7,7 @@
   "scripts": {
     "build": "tsup",
     "start": "tsnd -r tsconfig-paths/register --files --transpile-only ./src/main.ts",
-    "start:prod": "node dist/main",
+    "start:prod": "npx prisma db push && node dist/main",
     "dev:server": "tsnd -r tsconfig-paths/register --files --transpile-only --respawn --ignore-watch node_modules ./src/main.ts",
     "test": "tsnd -r tsconfig-paths/register --files --transpile-only --respawn --ignore-watch node_modules ./test/all.test.ts",
     "lint": "eslint --fix --ext .ts src",
